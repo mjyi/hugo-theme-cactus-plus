@@ -23,7 +23,7 @@
                       </span>
                     </h2>
                 </header>
-                {{ if .Site.Params.enableToc }}
+                {{ if and (gt .WordCount 200 ) (ne .Params.toc "false") }}
                   {{ if .TableOfContents }}
                     <div id="toc">
                       {{ .TableOfContents }}
@@ -41,6 +41,10 @@
 
             {{ if .Site.Params.enableDisqus }}
                 {{ partial "disqus.html" . }}
+            {{ end }}
+
+            {{ if .Site.Params.enableGitalk }}
+              {{ partial "gitalk.html" . }}
             {{ end }}
 
             {{ if .Site.Params.showLatestPosts }}
