@@ -43,9 +43,7 @@
                 {{ partial "disqus.html" . }}
             {{ end }}
 
-            {{ if .Site.Params.enableGitalk }}
-              {{ partial "gitalk.html" . }}
-            {{ end }}
+            {{ partial "gitalk.html" . }}
 
             {{ if .Site.Params.showLatestPosts }}
                 {{ partial "latest-posts.html" . }}
