@@ -33,7 +33,10 @@
                 <section id="post-body">
                     {{ .Content }}
                 </section>
-            </article>
+
+                {{ partial "entry/page.html" . }}
+
+              </article>
 
             {{ if .Site.Params.enableShare }}
                 {{ partial "share.html" . }}
