@@ -13,6 +13,7 @@ Cactus Plus is a minimalistic theme for bloggers based on the theme named [Cactu
 + **Both Google Analytics and Baidu Analytics for site analytics.**
 + **Table of Content**
 + **Twitter Card**
++ [ Gitalk ](https://gitalk.github.io) comment support **new**
 
 Here's the link to online demo: [http://nodejh.com](http://nodejh.com).
 
