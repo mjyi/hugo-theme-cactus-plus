@@ -1,0 +1,11 @@
+{{ $none := "没有了" }}
+<div id="entry-page">
+  <p>
+    上一篇： {{if .Prev }}
+    <a href="{{.Prev.Permalink}}" rel="prev">{{ .Prev.Title }}</a> {{ else }} {{ $none }} {{end}}
+  </p>
+  <p>
+    下一篇： {{if .Next }}
+    <a href="{{.Next.Permalink}}" rel="next">{{ .Next.Title }}</a> {{ else }} {{ $none }} {{ end }}
+  </p>
+</div>
