@@ -273,7 +273,7 @@ ul {
 li {
     list-style-position: outside;
     /* text-indent: -1.5em; */
-    margin-left: 1.5em;
+    /* margin-left: 1.5em; */
 }
 
 ul>li {
@@ -487,6 +487,7 @@ Post List
 
 #post-list li, #archive-list li {
     list-style-type: none;
+    word-break: break-all;
 }
 
 #post-list li:last-child {
@@ -799,7 +800,8 @@ h2.month {
 .archive .post-item {
     padding: 10px 0px;
     overflow-x: hidden;
-    white-space:nowrap;
+    white-space: inherit;
+    word-break: break-all;
 }
 
 .archive .post-time {
