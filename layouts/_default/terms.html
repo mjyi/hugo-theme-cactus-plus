@@ -5,22 +5,11 @@
 
 
        <section id="wrapper" class="tags">
-           <div class="page-tags">
-               <ul>
-                  {{ $data := .Data }}
-                  {{ range $key, $value := .Data.Terms.ByCount }}
-                     {{ if ($value.Name) }}
-                        <li>
-                           <a href="{{ $.Site.BaseURL }}{{ $data.Plural }}/{{ $value.Name | urlize }}">
-                              {{ $value.Name | upper }} <span>({{ $value.Count }})</span>
-                           </a>
-
-                        </li>
-                     {{ end }}
-                  {{ end }}
-              </ul>
-           </div>
-           {{ partial "footer.html" . }}
+          
+        {{- $taxonomy := .Data.Plural -}}
+        {{ partial "extras/taxonomy_cloud" ( dict "Taxonomy" $taxonomy "Shuffle" 1 "Scope" . ) }}
+ 
+        {{ partial "footer.html" . }}
        </section>
 
        {{ partial "js.html" . }}
