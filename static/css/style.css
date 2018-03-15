@@ -277,7 +277,7 @@ ul {
 li {
     list-style-position: outside;
     /* text-indent: -1.5em; */
-    /* margin-left: 1.5em; */
+    margin-left: 1.5em;
 }
 
 ul>li {
@@ -896,6 +896,7 @@ a.symbol:hover {
 #TableOfContents ul li {
   list-style-type: none;
   line-height: 1.7em;
+  margin-left: 0em;
 }
 #TableOfContents > ul {
   padding: 0;
