@@ -1,17 +1,38 @@
 {{ partial "head.html" . }}
-   <body>
-      {{ partial "nav.html" . }}
-      {{ partial "profile.html" . }}
+<body>
+  {{ partial "nav.html" . }}
+  {{ partial "profile.html" . }}
+  <section id="wrapper" class="tags">
+  <div class="page-tags">
 
+    {{ $fontUnit := "rem" }}
+    {{ $largestFontSize := 2.5 }}
+    {{ $smallestFontSize := 1.0 }}
+    {{ $fontSpread := sub $largestFontSize $smallestFontSize }}
+    {{ $max := add (len (index $.Data.Terms.ByCount 0).Pages) 1 }}
+    {{ $min := len (index $.Data.Terms.ByCount.Reverse 0).Pages }}
+    {{ $spread := sub $max $min }}
+    {{ $fontStep := div $fontSpread $spread }}
 
-       <section id="wrapper" class="tags">
-          
-        {{- $taxonomy := .Data.Plural -}}
-        {{ partial "extras/taxonomy_cloud" ( dict "Taxonomy" $taxonomy "Shuffle" 1 "Scope" . ) }}
- 
-        {{ partial "footer.html" . }}
-       </section>
+    <ul>
+      {{ $data := .Data }}
+      {{ range $key, $value := .Data.Terms.Alphabetical }}
+      {{ if ($value.Name) }}   
 
-       {{ partial "js.html" . }}
-   </body>
+      {{ $currentTagCount := $value.Count }}
+      {{ $currentFontSize := (add $smallestFontSize (mul (sub $currentTagCount $min) $fontStep) ) }}         
+      {{ $weigth := div (sub (math.Log $currentTagCount) (math.Log $min)) (sub (math.Log $max) (math.Log $min)) }}
+      {{ $currentFontSize := (add $smallestFontSize (mul (sub $largestFontSize $smallestFontSize) $weigth) ) }}
+      <li>
+         <a href="{{ $.Site.BaseURL }}{{ $data.Plural }}/{{ $value.Name | urlize }}" style="font-size:{{$currentFontSize}}{{$fontUnit}}"> {{ $value.Name }} </a>
+      </li>        
+      {{ end }}
+      {{ end }}
+    </ul>
+  </div>
+         
+  {{ partial "footer.html" . }}
+  </section>
+{{ partial "js.html" . }}
+</body>
 </html>
